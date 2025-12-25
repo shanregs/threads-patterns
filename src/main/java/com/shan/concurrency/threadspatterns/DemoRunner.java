@@ -5,6 +5,8 @@ import com.shan.concurrency.threadspatterns.completablefuture.CompletableFutureD
 import com.shan.concurrency.threadspatterns.countdownlatch.CountDownLatchDemo;
 import com.shan.concurrency.threadspatterns.cyclicbarrier.CyclicBarrierDemo;
 import com.shan.concurrency.threadspatterns.exchanger.ExchangerDemo;
+import com.shan.concurrency.threadspatterns.executorservice.BlockingQueueStrategiesDemo;
+import com.shan.concurrency.threadspatterns.executorservice.ExecutorServiceTypesDemo;
 import com.shan.concurrency.threadspatterns.forkjoinpool.ForkJoinPoolDemo;
 import com.shan.concurrency.threadspatterns.phaser.PhaserDemo;
 import com.shan.concurrency.threadspatterns.reentrantlock.ReentrantLockDemo;
@@ -39,6 +41,8 @@ public class DemoRunner implements CommandLineRunner {
     private final ForkJoinPoolDemo forkJoinPoolDemo;
     private final CompletableFutureDemo completableFutureDemo;
     private final VirtualThreadsDemo virtualThreadsDemo;
+    private final ExecutorServiceTypesDemo executorServiceTypesDemo;
+    private final BlockingQueueStrategiesDemo blockingQueueStrategiesDemo;
     private final ApplicationContext applicationContext;
 
     @Override
@@ -102,6 +106,12 @@ public class DemoRunner implements CommandLineRunner {
         Thread.sleep(1000);
 
         runDemo("11. Virtual Threads", () -> virtualThreadsDemo.demonstrate());
+        Thread.sleep(1000);
+
+        runDemo("12. ExecutorService Types", () -> executorServiceTypesDemo.demonstrate());
+        Thread.sleep(1000);
+
+        runDemo("13. BlockingQueue Strategies", () -> blockingQueueStrategiesDemo.demonstrate());
     }
 
     private void runSpecificDemo(String demoName) {
@@ -119,11 +129,13 @@ public class DemoRunner implements CommandLineRunner {
             case "forkjoinpool" -> runDemo("ForkJoinPool", () -> forkJoinPoolDemo.demonstrate());
             case "completablefuture" -> runDemo("CompletableFuture", () -> completableFutureDemo.demonstrate());
             case "virtualthreads" -> runDemo("Virtual Threads", () -> virtualThreadsDemo.demonstrate());
+            case "executorservice" -> runDemo("ExecutorService Types", () -> executorServiceTypesDemo.demonstrate());
+            case "blockingqueuestrategies" -> runDemo("BlockingQueue Strategies", () -> blockingQueueStrategiesDemo.demonstrate());
             default -> {
                 log.error("Unknown demo: {}. Available demos:", demoName);
                 log.error("  - countdownlatch, cyclicbarrier, phaser, semaphore, exchanger");
                 log.error("  - threadlocal, reentrantlock, blockingqueue, forkjoinpool");
-                log.error("  - completablefuture, virtualthreads");
+                log.error("  - completablefuture, virtualthreads, executorservice, blockingqueuestrategies");
             }
         }
     }

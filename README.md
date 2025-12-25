@@ -1,6 +1,6 @@
 # Java Concurrency Patterns - Complete Learning Project
 
-A comprehensive Spring Boot 4 application demonstrating 11 essential Java 25 concurrency patterns with real-world examples, detailed logging, and unit tests.
+A comprehensive Spring Boot 4 application demonstrating 13 essential Java 21 concurrency patterns with real-world examples, detailed logging, and unit tests.
 
 ## 🎯 Project Overview
 
@@ -28,6 +28,8 @@ This project provides hands-on implementations of all major Java concurrency uti
 | 9 | **ForkJoinPool** | Divide-and-conquer | Image processing |
 | 10 | **CompletableFuture** | Async pipelines | API call chains |
 | 11 | **Virtual Threads** | High concurrency | Web server (1000s requests) |
+| 12 | **ExecutorService Types** | Task execution | Thread pool strategies |
+| 13 | **BlockingQueue Strategies** | Task queuing | Queue implementations |
 
 ## 🚀 Quick Start
 
@@ -51,7 +53,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--demo=countdownlatch
 mvn spring-boot:run -Dspring-boot.run.arguments=--demo=virtualthreads
 ```
 
-Available demos: `countdownlatch`, `cyclicbarrier`, `phaser`, `semaphore`, `exchanger`, `threadlocal`, `reentrantlock`, `blockingqueue`, `forkjoinpool`, `completablefuture`, `virtualthreads`
+Available demos: `countdownlatch`, `cyclicbarrier`, `phaser`, `semaphore`, `exchanger`, `threadlocal`, `reentrantlock`, `blockingqueue`, `forkjoinpool`, `completablefuture`, `virtualthreads`, `executorservice`, `blockingqueuestrategies`
 
 ### Run Tests
 
@@ -66,7 +68,8 @@ mvn test -Dtest=VirtualThreadsDemoTest
 
 ## 📖 Documentation
 
-For comprehensive documentation including:
+### Concurrency Patterns Guide
+For comprehensive documentation on all concurrency patterns:
 - Visual representations
 - Advantages/disadvantages
 - Performance characteristics
@@ -75,6 +78,18 @@ For comprehensive documentation including:
 - Common pitfalls
 
 See **[README-THREAD-PATTERNS.md](README-THREAD-PATTERNS.md)**
+
+### Executor Framework Guide
+For comprehensive ExecutorService and BlockingQueue documentation:
+- Executor framework architecture
+- Different ExecutorService types (FixedThreadPool, CachedThreadPool, etc.)
+- BlockingQueue strategies (ArrayBlockingQueue, LinkedBlockingQueue, etc.)
+- ThreadPoolExecutor deep dive
+- Task lifecycle and handling
+- Visual diagrams and flow charts
+- Best practices and common pitfalls
+
+See **[EXECUTOR-FRAMEWORK-GUIDE.md](EXECUTOR-FRAMEWORK-GUIDE.md)**
 
 ## 🏗️ Project Structure
 
@@ -122,6 +137,11 @@ src/main/java/com/shan/concurrency/threadspatterns/
 ├── virtualthreads/
 │   ├── VirtualThreadsDemo.java
 │   └── WebRequest.java
+├── executorservice/
+│   ├── ExecutorServiceTypesDemo.java
+│   ├── BlockingQueueStrategiesDemo.java
+│   ├── Task.java
+│   └── TaskResult.java
 ├── DemoRunner.java
 └── ThreadsPatternsApplication.java
 ```
