@@ -4,6 +4,7 @@ import com.shan.concurrency.threadspatterns.blockingqueue.BlockingQueueDemo;
 import com.shan.concurrency.threadspatterns.completablefuture.CompletableFutureDemo;
 import com.shan.concurrency.threadspatterns.countdownlatch.CountDownLatchDemo;
 import com.shan.concurrency.threadspatterns.cyclicbarrier.CyclicBarrierDemo;
+import com.shan.concurrency.threadspatterns.cyclicbarrier.MultiHopTourDemo;
 import com.shan.concurrency.threadspatterns.exchanger.ExchangerDemo;
 import com.shan.concurrency.threadspatterns.executorservice.BlockingQueueStrategiesDemo;
 import com.shan.concurrency.threadspatterns.executorservice.ExecutorServiceTypesDemo;
@@ -32,6 +33,7 @@ public class DemoRunner implements CommandLineRunner {
 
     private final CountDownLatchDemo countDownLatchDemo;
     private final CyclicBarrierDemo cyclicBarrierDemo;
+    private final MultiHopTourDemo multiHopTourDemo;
     private final PhaserDemo phaserDemo;
     private final SemaphoreDemo semaphoreDemo;
     private final ExchangerDemo exchangerDemo;
@@ -78,40 +80,43 @@ public class DemoRunner implements CommandLineRunner {
         runDemo("1. CountDownLatch", () -> countDownLatchDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("2. CyclicBarrier", () -> cyclicBarrierDemo.demonstrate());
+        runDemo("2. CyclicBarrier - Matrix Processing", () -> cyclicBarrierDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("3. Phaser", () -> phaserDemo.demonstrate());
+        runDemo("3. CyclicBarrier - Multi-Hop Tour", () -> multiHopTourDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("4. Semaphore", () -> semaphoreDemo.demonstrate());
+        runDemo("4. Phaser", () -> phaserDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("5. Exchanger", () -> exchangerDemo.demonstrate());
+        runDemo("5. Semaphore", () -> semaphoreDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("6. ThreadLocal", () -> threadLocalDemo.demonstrate());
+        runDemo("6. Exchanger", () -> exchangerDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("7. ReentrantLock", () -> reentrantLockDemo.demonstrate());
+        runDemo("7. ThreadLocal", () -> threadLocalDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("8. BlockingQueue", () -> blockingQueueDemo.demonstrate());
+        runDemo("8. ReentrantLock", () -> reentrantLockDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("9. ForkJoinPool", () -> forkJoinPoolDemo.demonstrate());
+        runDemo("9. BlockingQueue", () -> blockingQueueDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("10. CompletableFuture", () -> completableFutureDemo.demonstrate());
+        runDemo("10. ForkJoinPool", () -> forkJoinPoolDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("11. Virtual Threads", () -> virtualThreadsDemo.demonstrate());
+        runDemo("11. CompletableFuture", () -> completableFutureDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("12. ExecutorService Types", () -> executorServiceTypesDemo.demonstrate());
+        runDemo("12. Virtual Threads", () -> virtualThreadsDemo.demonstrate());
         Thread.sleep(1000);
 
-        runDemo("13. BlockingQueue Strategies", () -> blockingQueueStrategiesDemo.demonstrate());
+        runDemo("13. ExecutorService Types", () -> executorServiceTypesDemo.demonstrate());
+        Thread.sleep(1000);
+
+        runDemo("14. BlockingQueue Strategies", () -> blockingQueueStrategiesDemo.demonstrate());
     }
 
     private void runSpecificDemo(String demoName) {
@@ -119,7 +124,8 @@ public class DemoRunner implements CommandLineRunner {
 
         switch (demoName) {
             case "countdownlatch" -> runDemo("CountDownLatch", () -> countDownLatchDemo.demonstrate());
-            case "cyclicbarrier" -> runDemo("CyclicBarrier", () -> cyclicBarrierDemo.demonstrate());
+            case "cyclicbarrier" -> runDemo("CyclicBarrier - Matrix Processing", () -> cyclicBarrierDemo.demonstrate());
+            case "multihoptour" -> runDemo("CyclicBarrier - Multi-Hop Tour", () -> multiHopTourDemo.demonstrate());
             case "phaser" -> runDemo("Phaser", () -> phaserDemo.demonstrate());
             case "semaphore" -> runDemo("Semaphore", () -> semaphoreDemo.demonstrate());
             case "exchanger" -> runDemo("Exchanger", () -> exchangerDemo.demonstrate());
@@ -133,7 +139,7 @@ public class DemoRunner implements CommandLineRunner {
             case "blockingqueuestrategies" -> runDemo("BlockingQueue Strategies", () -> blockingQueueStrategiesDemo.demonstrate());
             default -> {
                 log.error("Unknown demo: {}. Available demos:", demoName);
-                log.error("  - countdownlatch, cyclicbarrier, phaser, semaphore, exchanger");
+                log.error("  - countdownlatch, cyclicbarrier, multihoptour, phaser, semaphore, exchanger");
                 log.error("  - threadlocal, reentrantlock, blockingqueue, forkjoinpool");
                 log.error("  - completablefuture, virtualthreads, executorservice, blockingqueuestrategies");
             }

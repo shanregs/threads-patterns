@@ -1,6 +1,6 @@
 # Java Concurrency Patterns - Complete Learning Project
 
-A comprehensive Spring Boot 4 application demonstrating 13 essential Java 21 concurrency patterns with real-world examples, detailed logging, and unit tests.
+A comprehensive Spring Boot 4 application demonstrating 14 essential Java 21 concurrency patterns with real-world examples, detailed logging, and unit tests.
 
 ## 🎯 Project Overview
 
@@ -18,7 +18,7 @@ This project provides hands-on implementations of all major Java concurrency uti
 | # | Pattern | Use Case | Example |
 |---|---------|----------|---------|
 | 1 | **CountDownLatch** | Batch coordination | Wait for 5 data files to process |
-| 2 | **CyclicBarrier** | Phase synchronization | Matrix row processing |
+| 2 | **CyclicBarrier** | Phase synchronization | Matrix row processing + Multi-hop city tour |
 | 3 | **Phaser** | Multi-phase sync | Multiplayer game rounds |
 | 4 | **Semaphore** | Resource limiting | ATM with 3 terminals |
 | 5 | **Exchanger** | Two-party exchange | Trading system |
@@ -30,6 +30,7 @@ This project provides hands-on implementations of all major Java concurrency uti
 | 11 | **Virtual Threads** | High concurrency | Web server (1000s requests) |
 | 12 | **ExecutorService Types** | Task execution | Thread pool strategies |
 | 13 | **BlockingQueue Strategies** | Task queuing | Queue implementations |
+| 14 | **CyclicBarrier (Tour)** | Multi-hop coordination | Guided city tour with stops |
 
 ## 🚀 Quick Start
 
@@ -53,7 +54,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--demo=countdownlatch
 mvn spring-boot:run -Dspring-boot.run.arguments=--demo=virtualthreads
 ```
 
-Available demos: `countdownlatch`, `cyclicbarrier`, `phaser`, `semaphore`, `exchanger`, `threadlocal`, `reentrantlock`, `blockingqueue`, `forkjoinpool`, `completablefuture`, `virtualthreads`, `executorservice`, `blockingqueuestrategies`
+Available demos: `countdownlatch`, `cyclicbarrier`, `multihoptour`, `phaser`, `semaphore`, `exchanger`, `threadlocal`, `reentrantlock`, `blockingqueue`, `forkjoinpool`, `completablefuture`, `virtualthreads`, `executorservice`, `blockingqueuestrategies`
 
 ### Run Tests
 
@@ -100,7 +101,9 @@ src/main/java/com/shan/concurrency/threadspatterns/
 │   └── BatchJobTask.java
 ├── cyclicbarrier/
 │   ├── CyclicBarrierDemo.java
-│   └── MatrixRowProcessor.java
+│   ├── MatrixRowProcessor.java
+│   ├── MultiHopTourDemo.java
+│   └── Tourist.java
 ├── phaser/
 │   ├── PhaserDemo.java
 │   └── GamePlayer.java
@@ -163,6 +166,7 @@ Not just toy examples - production patterns:
 - **Web server** handling thousands of requests (Virtual Threads)
 - **Trading platform** exchanging orders (Exchanger)
 - **API gateway** chaining calls (CompletableFuture)
+- **Guided city tour** with multiple stops and group synchronization (CyclicBarrier)
 
 ### Comprehensive Tests
 Every demo has a test:
