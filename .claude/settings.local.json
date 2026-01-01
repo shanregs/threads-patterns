@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(mvn clean compile:*)",
-      "Bash(mvn clean test:*)"
+      "Bash(mvn clean test:*)",
+      "Bash(mvn exec:java:*)",
+      "Bash(mvn compile:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
